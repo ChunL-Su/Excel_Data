@@ -59,3 +59,18 @@ wb.save('文件名')
     # 最后必须保存
     wb.save('文件名')
     ```
+
+- xlwriter基于xlwt,并且使用起来更加的方便
+- 如果需要进行对表格进行内容的添加，需要使用到xlutils
+    - 实现方法如下
+    ```
+  from xlutils.copy import copy
+  
+  read_data = xlrd.open_workbook('源文件名')
+  work_book = copy(read_data)
+  work_sheet = work_book.get_sheet(0)
+  # 写入数据
+  work_sheet.write(要写入的内容)
+  
+  work_book.save(文件名)
+  ```
